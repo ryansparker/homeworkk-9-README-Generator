@@ -1,0 +1,26 @@
+{
+  "name": "homeworkk-9-README-Generator",
+  "version": "1.0.0",
+  "description": "Create a command-line application that dynamically generates a README.md from a user's input. The application will be invoked with the following command:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryansparker/homeworkk-9-README-Generator.git"
+  },
+  "keywords": [
+    "homework"
+  ],
+  "author": "Ryan Parker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryansparker/homeworkk-9-README-Generator/issues"
+  },
+  "homepage": "https://github.com/ryansparker/homeworkk-9-README-Generator#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "inquirer": "^7.1.0"
+  }
+}
