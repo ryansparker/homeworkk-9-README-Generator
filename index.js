@@ -2,6 +2,8 @@ const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
 
+const readmeFile = process.argv[2] || 'README.md'
+
 const questions = [{
     type: "input",
     message: "What is your GitHub username?",
@@ -43,90 +45,104 @@ const questions = [{
     name: "test"
 }]
 
-function processResponse(response, profile) {
+function generateReadme(response, profile = {}, repo = {}) {
     const {
-        title = 'Title Here',
-        desc = 'Description Here',
-        install = "Install",
-        usage = "Usage",
-        license = "License",
-        contributing = "Contributing",
-        test = "Test",
-        email = "name@example.com"
+        install,
+        usage,
+        license,
+        contributing,
+        test,
+        email
     } = response
 
     const out = `
-        ## ${title}
+## ${repo.name || 'Insert Project Name Here'}
 
-        ${desc}
+Project URL: ${repo.html_url || 'Insert URL Here'}
 
-        ## Table of Contents
+${repo.description || 'Insert Description Here'}
 
-        * Installation
-        * Usage
-        * License
-        * Contributing
-        * Tests
+## Table of Contents
 
-        ## Installation
+* [Installation] (#installation)
+* [Usage] (#usage)
+* [License] (#license)
+* [Contributing] (#contributing)
+* [Tests] (#tests)
 
-        ${install}
+## Installation
 
-        ## Usage
+${install || 'Insert Installation Instructions'}
 
-        ${usage}
+## Usage
 
-        ## License
+${usage || 'Insert Usage Instructions'}
 
-        ${license}
+## License
 
-        ## Contributing
+${license || 'Insert License'}
 
-        ${contributing}
+## Contributing
 
-        ## Tests
+${contributing || 'Insert Contributing Instructions'}
 
-        ${test}
+## Tests
 
-        ## Author
-        
-        ![${profile.name}](${profile.avatar_url})
-        ${profile.name}
-        ${profile.bio}
-       
-        ${email}
+${test || 'Insert Test Instructions'}
 
-        `
+## Author
+
+${profile.avatar_url ? `![${profile.name || 'Name Here'}](${profile.avatar_url})` : ''}
+
+${profile.name || 'Insert Name Here'}
+
+${profile.location ? `${profile.location}\n` : ''}
+${profile.blog ? `${profile.blog}\n` : ''}
+${email || 'name@example.com'}
+
+${profile.bio || 'Insert Biography Here'}`
 
     return out;
 }
 
+// BEGIN PROGRAM HERE
 
-const result = inquirer.prompt(questions)
-result.then(function (response) {
-    const profileURL = `https://api.github.com/users/${response.username}`;
-    
-    axios.get(profileURL)
-        .then(function (profile) {
-            const output = processResponse(response, profile);
-            fs.writeFile("README.md", output, function(err){
-                console.log(err);
+inquirer.prompt(questions)
+    .then(function (response) {
+        const username = response.username.trim()
+        const reponame = response.repo.trim()
+
+        const tasks = []
+
+        if ( username ) {
+            const profileURL = `https://api.github.com/users/${username}`;
+            tasks.push(axios.get(profileURL).then(function (response) {
+                return response.data
+            }).catch( function (err) {
+                console.log('Unable to fetch profile information from Github. Check your username.')
+            }))
+        }
+
+        if ( username && reponame ) {
+            const repoURL = `https://api.github.com/repos/${username}/${reponame}`;
+            tasks.push(axios.get(repoURL).then(function (response) {
+                return response.data
+            }).catch( function (err) {
+                console.log('Unable to fetch repo information from Github. Check your repo name.')
+            }))
+        }
+
+        // Wait for out tasks to finish
+        Promise.all(tasks).then( function (data) {
+            const [profile, repo] = data
+
+            const readme = generateReadme(response, profile, repo)
+            fs.writeFile(readmeFile, readme, function(err){
+                if ( err ) {
+                    console.log(err);
+                } else {
+                    console.log(`Readme written to ${readmeFile}`)
+                }
             })
         })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        })
-        .finally(function () {
-            // always executed
-        });
-
-})
-
-function x(p1, p2) {
-
-}
-
-
-
-
+    })
