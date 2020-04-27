@@ -1,18 +1,17 @@
 
-## readme-generator
+## Insert Project Name Here
 
-Project URL: https://github.com/ryansparker/readme-generator
+Project URL: Insert URL Here
 
-A small program to generate a readme from a GitHub repository.
+Insert Description Here
 
 ## Table of Contents
 
-* [create an anchor](#anchors-in-markdown)
 * [Installation] (#installation)
-* [Usage] (#usage)
-* [License] (#license)
-* [Contributing] (#contributing)
-* [Tests] (#tests)
+* [create an anchor] (#Usage)
+* [create an anchor] (#License)
+* [create an anchor] (#contributing)
+* [create an anchor] (#tests)
 
 ## Installation
 
@@ -44,6 +43,6 @@ Philadelphia
 
 https://ryansparker.github.io/updated-portfolio/
 
-ryan@ryan.com
+name@example.com
 
 Front-end developer with a background in art, design, and education. Currently studying at Penn LPS Bootcamp.
