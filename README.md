@@ -7,6 +7,7 @@ A small program to generate a readme from a GitHub repository.
 
 ## Table of Contents
 
+* [create an anchor](#anchors-in-markdown)
 * [Installation] (#installation)
 * [Usage] (#usage)
 * [License] (#license)
@@ -15,11 +16,11 @@ A small program to generate a readme from a GitHub repository.
 
 ## Installation
 
-clone repo into directory and npm install
+Insert Installation Instructions
 
 ## Usage
 
-npm run-script start [filename]
+Insert Usage Instructions
 
 ## License
 
@@ -27,7 +28,7 @@ Insert License
 
 ## Contributing
 
-send me a pull request
+Insert Contributing Instructions
 
 ## Tests
 
@@ -43,6 +44,6 @@ Philadelphia
 
 https://ryansparker.github.io/updated-portfolio/
 
-ryansparker@gmail.com
+ryan@ryan.com
 
 Front-end developer with a background in art, design, and education. Currently studying at Penn LPS Bootcamp.
