@@ -64,6 +64,7 @@ ${repo.description || 'Insert Description Here'}
 
 ## Table of Contents
 
+* [create an anchor](#anchors-in-markdown)
 * [Installation] (#installation)
 * [Usage] (#usage)
 * [License] (#license)
