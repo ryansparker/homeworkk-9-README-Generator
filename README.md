@@ -1,42 +1,48 @@
 
-        ## Title Here
+## readme-generator
 
-        Description Here
+Project URL: https://github.com/ryansparker/readme-generator
 
-        ## Table of Contents
+A small program to generate a readme from a GitHub repository.
 
-        * Installation
-        * Usage
-        * License
-        * Contributing
-        * Tests
+## Table of Contents
 
-        ## Installation
+* [Installation] (#installation)
+* [Usage] (#usage)
+* [License] (#license)
+* [Contributing] (#contributing)
+* [Tests] (#tests)
 
-        
+## Installation
 
-        ## Usage
+clone repo into directory and npm install
 
-        
+## Usage
 
-        ## License
+npm run-script start [filename]
 
-        
+## License
 
-        ## Contributing
+Insert License
 
-        
+## Contributing
 
-        ## Tests
+send me a pull request
 
-        
+## Tests
 
-        ## Author
-        
-        ![undefined](undefined)
-        undefined
-        undefined
-       
-        d
+Insert Test Instructions
 
-        
+## Author
+
+![Ryan Parker](https://avatars1.githubusercontent.com/u/61031226?v=4)
+
+Ryan Parker
+
+Philadelphia
+
+https://ryansparker.github.io/updated-portfolio/
+
+ryansparker@gmail.com
+
+Front-end developer with a background in art, design, and education. Currently studying at Penn LPS Bootcamp.
